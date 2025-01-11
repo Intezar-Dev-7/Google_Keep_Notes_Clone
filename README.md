@@ -8,7 +8,6 @@ Features
 ✍️ Create Notes: Easily add text notes, checklists, and voice memos.
 🎨 Note Customization: Customize notes with different colors, labels, and reminders to stay organized.
 🔍 Search and Filters: Find notes quickly with the built-in search and filter features.
-📅 Reminders: Set time-based or location-based reminders for important tasks.
 🗑️ Trash: Restore accidentally deleted notes from the trash before they are permanently deleted.
 🔒 Secure and Private: Protect sensitive notes with a PIN or fingerprint authentication.
 📱 Cross-Device Sync: Sync notes across devices in real-time, ensuring your information is always up to date.
