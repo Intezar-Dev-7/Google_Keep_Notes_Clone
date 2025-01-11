@@ -1,16 +1,37 @@
-# google_keep_notes_clone
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+📝 Google Keep Notes Clone
+The Google Keep Notes Clone is a simple, modern note-taking app that helps users capture ideas.Designed with a clean and intuitive interface, this app ensures a smooth experience across both Android and iOS devices. Built with Flutter, it uses SQFlite for local storage and Firebase for authentication, providing a reliable and secure platform.
 
-A few resources to get you started if this is your first Flutter project:
+Features
+✍️ Create Notes: Easily add text notes, checklists, and voice memos.
+🎨 Note Customization: Customize notes with different colors, labels, and reminders to stay organized.
+🔍 Search and Filters: Find notes quickly with the built-in search and filter features.
+📅 Reminders: Set time-based or location-based reminders for important tasks.
+🗑️ Trash: Restore accidentally deleted notes from the trash before they are permanently deleted.
+🔒 Secure and Private: Protect sensitive notes with a PIN or fingerprint authentication.
+📱 Cross-Device Sync: Sync notes across devices in real-time, ensuring your information is always up to date.
+🗂️ Local Storage with SQFlite: Store and manage your notes locally for quick access and offline use.
+🔑 Authentication with Firebase: Securely sign in and manage user data with Firebase Authentication.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Tech Stack
+Frontend: Flutter
+Storage: SQFlite
+Authentication: Firebase
+License
+This project is licensed under the MIT License.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Feel free to tweak or add any further features.
+
+
+
+
+
+
+
+
+
+
+
+
