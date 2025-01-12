@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "967064072268",
+    "project_id": "keepnotesclone-7bc24",
+    "storage_bucket": "keepnotesclone-7bc24.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967064072268:android:8cc1d2161904a93f3d84e9",
+        "android_client_info": {
+          "package_name": "com.example.google_keep_notes_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB36ZIF3kQkXvBW9FqHkpHOrEZHrkfbUus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
