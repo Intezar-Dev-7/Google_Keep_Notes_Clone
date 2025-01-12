@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_keep_notes_clone/services/login_info.dart';
+import 'package:google_keep_notes_clone/screens/login_screen.dart';
 import 'package:google_keep_notes_clone/screens/search_screen.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
 
-class SearchBar extends StatelessWidget {
+class SearchBar extends StatefulWidget {
   final GlobalKey<ScaffoldState> drawerKey;
 
   const SearchBar({
@@ -10,6 +12,12 @@ class SearchBar extends StatelessWidget {
     required this.drawerKey, // Accept the passed drawerKey
   });
 
+  @override
+  State<SearchBar> createState() => _SearchBarState();
+}
+
+class _SearchBarState extends State<SearchBar> {
+  late String? imageUrl;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +43,7 @@ class SearchBar extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        drawerKey.currentState?.openDrawer();
+                        widget.drawerKey.currentState?.openDrawer();
                       },
                       icon: const Icon(
                         Icons.menu,
@@ -90,9 +98,20 @@ class SearchBar extends StatelessWidget {
                     const SizedBox(
                       width: 9,
                     ),
-                    const CircleAvatar(
-                      radius: 16,
-                      backgroundColor: Colors.black,
+                    GestureDetector(
+                      onTap: () {
+                        // SignOut();
+                        LocalDataSaver.saveLoginData(false);
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginScreen()));
+                      },
+                      child: CircleAvatar(
+                        onBackgroundImageError: (Object, StackTrace) {},
+                        radius: 16,
+                        backgroundImage: NetworkImage(imageUrl.toString()),
+                      ),
                     )
                   ],
                 ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_keep_notes_clone/home.dart';
 
-import 'package:google_keep_notes_clone/model/login_info.dart';
+import 'package:google_keep_notes_clone/services/login_info.dart';
 import 'package:google_keep_notes_clone/screens/login_screen.dart';
 
 Future<void> main() async {
@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   getLoggedInState() async {
     await LocalDataSaver.getLogData().then((value) {
       setState(() {
-        isLogIn = value!;
+        isLogIn = false;
       });
     });
   }
@@ -40,6 +40,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Google Keep Notes Clone',
       theme: ThemeData(
         primarySwatch: Colors.blue,

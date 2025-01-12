@@ -1,4 +1,5 @@
 import 'package:google_keep_notes_clone/model/my_note_model.dart';
+import 'package:google_keep_notes_clone/services/firestore_db.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -38,6 +39,7 @@ class NotesDatabase {
   }
 
   Future<Note?> insertEntry(Note note) async {
+    await FireDB().createNewNoteFirestore(note);
     final db = await instance.database;
     final id = await db!.insert(NotesNames.tableName, note.toJson());
 
@@ -66,6 +68,7 @@ class NotesDatabase {
   }
 
   Future updateNote(Note note) async {
+    await FireDB().updateNoteFirestore(note);
     final db = await instance.database;
     await db!.update(NotesNames.tableName, note.toJson(),
         where: '${NotesNames.id}= ?', whereArgs: [note.id]);
@@ -99,9 +102,10 @@ class NotesDatabase {
   }
 
   Future deleteNote(Note? note) async {
+    await FireDB().deleteNoteFirestore(note!);
     final db = await instance.database;
     return await db!.delete(NotesNames.tableName,
-        where: '${NotesNames.id} = ?', whereArgs: [note?.id]);
+        where: '${NotesNames.id} = ?', whereArgs: [note.id]);
   }
 
   Future<void> deleteAllNotes() async {

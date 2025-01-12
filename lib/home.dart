@@ -5,6 +5,7 @@ import 'package:google_keep_notes_clone/screens/new_note_screen.dart';
 import 'package:google_keep_notes_clone/screens/notes_screen.dart';
 
 import 'package:google_keep_notes_clone/services/db.dart';
+import 'package:google_keep_notes_clone/services/firestore_db.dart';
 import 'package:google_keep_notes_clone/side_menu_bar.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
 
@@ -23,13 +24,15 @@ class _HomeState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // createEntry(Note(
-    //     pin: false,
-    //     title: "Flutter Notes",
-    //     content:
-    //         "This is a note taking app, built with flutter. It allows you to create, edit, and delete notes. You can also search for notes and organize them in a grid or list view.  ",
-    //     createdTime: DateTime.now(),
-    //     isArchived: false));
+
+    FireDB().createNewNoteFirestore(Note(
+      pin: false,
+      title: "Flutter Notes",
+      content:
+          "This is a note taking app, built with flutter. It allows you to create, edit, and delete notes. You can also search for notes and organize them in a grid or list view.",
+      createdTime: DateTime.now(),
+      isArchived: false,
+    ));
     getAllNotes();
     // resetDatabase();
   }
@@ -38,12 +41,13 @@ class _HomeState extends State<HomeScreen> {
     await NotesDatabase.instance.insertEntry(note);
   }
 
+//
   Future getAllNotes() async {
-    notesList = await NotesDatabase.instance.readAllNotes();
-
-    setState(() {
-      isLoading = false;
-    });
+    if (mounted) {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   Future getOneNote(int id) async {
