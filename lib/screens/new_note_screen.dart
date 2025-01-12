@@ -3,6 +3,7 @@ import 'package:google_keep_notes_clone/home.dart';
 import 'package:google_keep_notes_clone/model/my_note_model.dart';
 import 'package:google_keep_notes_clone/services/db.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
+import 'package:uuid/uuid.dart';
 
 class NewNoteScreen extends StatefulWidget {
   const NewNoteScreen({super.key});
@@ -14,6 +15,8 @@ class NewNoteScreen extends StatefulWidget {
 class _NewNoteScreenState extends State<NewNoteScreen> {
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
+
+  var uuid = const Uuid();
 
   @override
   void dispose() {
@@ -41,6 +44,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
             onPressed: () async {
               await NotesDatabase.instance.insertEntry(Note(
                   title: titleController.text,
+                  uniqueId: uuid.v1(),
                   content: contentController.text,
                   createdTime: DateTime.now(),
                   pin: false,

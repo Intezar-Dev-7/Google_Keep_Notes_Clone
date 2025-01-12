@@ -17,6 +17,7 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
+  bool isStaggered = true;
   late String? imageUrl;
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class _SearchBarState extends State<SearchBar> {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          width: MediaQuery.of(context).size.width,
           height: 55,
+          width: MediaQuery.of(context).size.width / 3,
           decoration: BoxDecoration(
               color: cardColor,
               borderRadius: BorderRadius.circular(16),
@@ -90,7 +91,11 @@ class _SearchBarState extends State<SearchBar> {
                                     RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50.0),
                             ))),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            isStaggered = !isStaggered;
+                          });
+                        },
                         child: const Icon(
                           Icons.grid_view,
                           color: white,

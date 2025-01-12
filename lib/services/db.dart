@@ -29,6 +29,7 @@ class NotesDatabase {
     await db.execute('''
     CREATE TABLE Notes(
     ${NotesNames.id} $idType,
+    ${NotesNames.uniqueId} $textType,
     ${NotesNames.pin} $boolType,
     ${NotesNames.isArchived} $boolType,
     ${NotesNames.title} $textType,
@@ -39,9 +40,10 @@ class NotesDatabase {
   }
 
   Future<Note?> insertEntry(Note note) async {
-    await FireDB().createNewNoteFirestore(note);
     final db = await instance.database;
     final id = await db!.insert(NotesNames.tableName, note.toJson());
+    print(id);
+    await FireDB().createNewNoteFirestore(note, id.toString());
 
     return note.copy(id: id);
   }

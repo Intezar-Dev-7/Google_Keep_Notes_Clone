@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 
 class NotesNames {
   static const String id = "id";
+  static const String uniqueId = "uniqueId";
   static const String pin = "pin";
   static const String title = "title";
   static const String content = "content";
@@ -13,6 +14,7 @@ class NotesNames {
     id,
     pin,
     title,
+    uniqueId,
     content,
     createdTime,
     isArchived,
@@ -22,6 +24,7 @@ class NotesNames {
 class Note {
   final int? id;
   final bool pin;
+  final String uniqueId;
   final bool isArchived;
   final String title;
   final String content;
@@ -34,12 +37,14 @@ class Note {
       required this.title,
       required this.isArchived,
       required this.content,
+      required this.uniqueId,
       required this.createdTime});
 
   Note copy({
     int? id,
     bool? pin,
     bool? isArchived,
+    String? uniqueId,
     String? title,
     String? content,
     DateTime? createdTime,
@@ -48,6 +53,7 @@ class Note {
         id: id ?? this.id,
         pin: pin ?? this.pin,
         title: title ?? this.title,
+        uniqueId: uniqueId ?? this.uniqueId,
         content: content ?? this.content,
         createdTime: createdTime ?? this.createdTime,
         isArchived: isArchived ?? this.isArchived);
@@ -75,7 +81,8 @@ class Note {
         title: json[NotesNames.title] as String,
         content: json[NotesNames.content] as String,
         createdTime: createdTime,
-        isArchived: json[NotesNames.isArchived] == 1);
+        isArchived: json[NotesNames.isArchived] == 1,
+        uniqueId: json[NotesNames.uniqueId] as String);
   }
 
   Map<String, Object?> toJson() {
@@ -84,6 +91,7 @@ class Note {
       NotesNames.pin: pin ? 1 : 0,
       NotesNames.isArchived: isArchived ? 1 : 0,
       NotesNames.title: title,
+      NotesNames.uniqueId: uniqueId,
       NotesNames.content: content,
       NotesNames.createdTime: createdTime.toIso8601String()
     };

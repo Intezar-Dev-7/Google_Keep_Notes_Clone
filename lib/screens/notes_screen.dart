@@ -79,6 +79,7 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
             child: Column(

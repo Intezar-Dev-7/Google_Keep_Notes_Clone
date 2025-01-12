@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_keep_notes_clone/services/login_info.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -11,6 +12,16 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool isSyncEnabled = false; // State for Sync toggle
   bool isHelpFeedbackEnabled = false; // State for Help & Feedback toggle
+
+  late bool value;
+
+  getSyncSettings() async {
+    await LocalDataSaver.getSyncSettings().then((valueFromDB) {
+      setState(() {
+        value = valueFromDB!;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

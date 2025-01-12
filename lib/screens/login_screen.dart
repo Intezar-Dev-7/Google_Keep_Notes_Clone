@@ -32,9 +32,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
               if (currentUser != null) {
                 LocalDataSaver.saveLoginData(true);
-                LocalDataSaver.saveImg(currentUser.photoURL ?? "");
-                LocalDataSaver.saveMail(currentUser.email ?? "");
-                LocalDataSaver.saveName(currentUser.displayName ?? "");
+                LocalDataSaver.saveImg(currentUser.photoURL.toString());
+                LocalDataSaver.saveMail(currentUser.email.toString());
+                LocalDataSaver.saveName(currentUser.displayName.toString());
+                LocalDataSaver.saveSyncSettings(false);
 
                 await FireDB().getAllStoredNotes();
                 Navigator.pushReplacement(

@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomeState createState() => _HomeState();
 }
 
@@ -25,14 +24,16 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    FireDB().createNewNoteFirestore(Note(
-      pin: false,
-      title: "Flutter Notes",
-      content:
-          "This is a note taking app, built with flutter. It allows you to create, edit, and delete notes. You can also search for notes and organize them in a grid or list view.",
-      createdTime: DateTime.now(),
-      isArchived: false,
-    ));
+    FireDB().createNewNoteFirestore(
+        Note(
+          pin: false,
+          title: 'Sample Title',
+          isArchived: false,
+          content: 'Sample Content',
+          createdTime: DateTime.now(),
+          uniqueId: '',
+        ),
+        'sampleNoteId');
     getAllNotes();
     // resetDatabase();
   }

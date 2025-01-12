@@ -49,7 +49,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   createdTime: widget.note.createdTime,
                   pin: widget.note.pin,
                   id: widget.note.id,
-                  isArchived: widget.note.isArchived);
+                  isArchived: widget.note.isArchived,
+                  uniqueId: widget.note.uniqueId);
               await NotesDatabase.instance.updateNote(newNote);
               Navigator.pushReplacement(
                   context,
