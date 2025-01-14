@@ -5,6 +5,7 @@ import 'package:google_keep_notes_clone/model/my_note_model.dart';
 import 'package:google_keep_notes_clone/screens/edit_note_screen.dart';
 import 'package:google_keep_notes_clone/services/db.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
+import 'package:intl/intl.dart';
 
 class NoteViewScreen extends StatefulWidget {
   NoteViewScreen({super.key, required this.note});
@@ -86,9 +87,18 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  "Created on: ${DateFormat('dd-MM-yy - kk:mm').format(widget.note.createdTime)}",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
                   widget.note.title,
-                  style: TextStyle(
-                    color: white.withOpacity(0.5),
+                  style: const TextStyle(
+                    color: white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -99,7 +109,7 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    // fontWeight: FontWeight.bold,
                   ),
                 ),
               ],

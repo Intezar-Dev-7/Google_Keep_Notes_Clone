@@ -10,17 +10,22 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool isSyncEnabled = false; // State for Sync toggle
+  // bool isSyncEnabled = false; // State for Sync toggle
   bool isHelpFeedbackEnabled = false; // State for Help & Feedback toggle
 
   late bool value;
-
   getSyncSettings() async {
     await LocalDataSaver.getSyncSettings().then((valueFromDB) {
       setState(() {
         value = valueFromDB!;
       });
     });
+  }
+
+  @override
+  initState() {
+    getSyncSettings();
+    super.initState();
   }
 
   @override
@@ -50,10 +55,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
-            value: isSyncEnabled,
-            onChanged: (bool value) {
+            value: value,
+            onChanged: (bool newValue) {
               setState(() {
-                isSyncEnabled = value;
+                value = newValue;
+                LocalDataSaver.saveSyncSettings(newValue);
               });
             },
             activeColor: Colors.blue,

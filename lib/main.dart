@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:google_keep_notes_clone/home.dart';
 
 import 'package:google_keep_notes_clone/services/login_info.dart';
-import 'package:google_keep_notes_clone/screens/login_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +44,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: isLogIn ? const HomeScreen() : const LoginScreen(),
+      home: const HomeScreen(),
+      // home: isLogIn ? const LoginScreen() : const HomeScreen(),
     );
   }
 }

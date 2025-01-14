@@ -56,6 +56,15 @@ class NotesDatabase {
     return queryResult.map((json) => Note.fromJson(json)).toList();
   }
 
+  Future<List<Note>> readAllArchiveNotes() async {
+    final db = await instance.database;
+    const orderBy = '${NotesNames.createdTime} ASC';
+    final queryResult = await db!.query(NotesNames.tableName,
+        orderBy: orderBy, where: '${NotesNames.isArchived} = 1');
+
+    return queryResult.map((json) => Note.fromJson(json)).toList();
+  }
+
   Future<Note?> readOneNote(int id) async {
     final db = await instance.database;
     final map = await db!.query(NotesNames.tableName,

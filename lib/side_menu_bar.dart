@@ -111,36 +111,34 @@ class _MyWidgetState extends State<SideMenuBar> {
 
   Widget sideBarSettingsSection() {
     return Container(
-        margin: const EdgeInsets.only(right: 10),
-        child: TextButton(
-            style: ButtonStyle(
-                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                    const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(50),
-                  bottomRight: Radius.circular(50)),
-            ))),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SettingsScreen()));
-            },
-            child: Container(
-              padding: const EdgeInsets.all(5),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.settings_outlined,
-                    size: 27,
-                    color: white.withOpacity(0.7),
-                  ),
-                  const SizedBox(width: 17),
-                  Text('Settings',
-                      style: TextStyle(
-                          color: white.withOpacity(0.7), fontSize: 18))
-                ],
+      margin: const EdgeInsets.only(right: 10),
+      child: TextButton(
+        style: ButtonStyle(
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(50), bottomRight: Radius.circular(50)),
+        ))),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const SettingsScreen()));
+        },
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          child: Row(
+            children: [
+              Icon(
+                Icons.settings_outlined,
+                size: 27,
+                color: white.withOpacity(0.7),
               ),
-            )));
+              const SizedBox(width: 17),
+              Text('Settings',
+                  style: TextStyle(color: white.withOpacity(0.7), fontSize: 18))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
