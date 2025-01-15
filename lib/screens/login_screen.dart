@@ -6,6 +6,7 @@ import 'package:google_keep_notes_clone/home.dart';
 import 'package:google_keep_notes_clone/services/firestore_db.dart';
 import 'package:google_keep_notes_clone/services/login_info.dart';
 import 'package:google_keep_notes_clone/services/auth.dart';
+import 'package:google_keep_notes_clone/utils/colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,40 +17,102 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Login"),
+      appBar: AppBar(
+        title: const Text(
+          "Welcome to Notes App",
+          style: TextStyle(color: Colors.white),
         ),
-        body: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          SignInButton(Buttons.Google, onPressed: () async {
-            try {
-              await signInWithGoogle();
-              final User? currentUser = _auth.currentUser;
+        centerTitle: true,
+        backgroundColor: cardColor,
+      ),
+      backgroundColor: cardColor,
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // App Logo
+              const CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.notes,
+                  size: 50,
+                  color: Colors.deepPurple,
+                ),
+              ),
+              const SizedBox(height: 20),
 
-              if (currentUser != null) {
-                LocalDataSaver.saveLoginData(true);
-                LocalDataSaver.saveImg(currentUser.photoURL.toString());
-                LocalDataSaver.saveMail(currentUser.email.toString());
-                LocalDataSaver.saveName(currentUser.displayName.toString());
-                LocalDataSaver.saveSyncSettings(false);
+              const Text(
+                "Your Notes, Anywhere!",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                "Sign in to sync and manage your notes seamlessly.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white70,
+                ),
+              ),
+              const SizedBox(height: 40),
+              // Google Sign-In Button
+              SignInButton(
+                Buttons.Google,
+                text: "Sign in with Google",
+                onPressed: () async {
+                  try {
+                    await signInWithGoogle();
+                    final User? currentUser = _auth.currentUser;
 
-                await FireDB().getAllStoredNotes();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
-              }
-            } catch (e) {
-              // Log or show the error to the user
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("An error occurred: $e")),
-              );
-            }
-          })
-        ])));
+                    if (currentUser != null) {
+                      LocalDataSaver.saveLoginData(true);
+                      LocalDataSaver.saveImg(currentUser.photoURL.toString());
+                      LocalDataSaver.saveMail(currentUser.email.toString());
+                      LocalDataSaver.saveName(
+                          currentUser.displayName.toString());
+                      LocalDataSaver.saveSyncSettings(false);
+
+                      await FireDB().getAllStoredNotes();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
+                      );
+                    }
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("An error occurred: $e")),
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+              // Footer Text
+              const Text(
+                "We never share your data with anyone.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white54,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
