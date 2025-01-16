@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:google_keep_notes_clone/home.dart';
 import 'package:google_keep_notes_clone/model/my_note_model.dart';
 import 'package:google_keep_notes_clone/screens/new_note_screen.dart';
 import 'package:google_keep_notes_clone/screens/notes_screen.dart';
+import 'package:google_keep_notes_clone/screens/search_screen.dart';
 import 'package:google_keep_notes_clone/services/db.dart';
 import 'package:google_keep_notes_clone/side_menu_bar.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
@@ -97,17 +97,33 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
             children: [
               IconButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreen()));
+                  Navigator.pop(context);
                 },
                 icon: const Icon(Icons.arrow_back, color: white),
               ),
               const SizedBox(width: 16),
-              Text(
-                "Search Your Notes",
-                style: TextStyle(color: white.withOpacity(0.5), fontSize: 16),
+// Gesture Detector
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchScreen()),
+                  );
+                },
+                child: SizedBox(
+                  height: 55,
+                  width: 190,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Search Your Notes",
+                          style: TextStyle(
+                              color: white.withOpacity(0.5), fontSize: 16)),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_keep_notes_clone/home.dart';
+import 'package:google_keep_notes_clone/screens/login_screen.dart';
 
 import 'package:google_keep_notes_clone/services/login_info.dart';
 
@@ -44,8 +45,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
-      // home: isLogIn ? const LoginScreen() : const HomeScreen(),
+      // home: const HomeScreen(),
+      home: isLogIn ? const HomeScreen() : const LoginScreen(),
     );
   }
 }

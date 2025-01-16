@@ -40,12 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // App Logo
               const CircleAvatar(
                 radius: 50,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.notes,
-                  size: 50,
-                  color: Colors.deepPurple,
-                ),
+                backgroundImage: AssetImage('assets/icon/appIconNotes.png'),
               ),
               const SizedBox(height: 20),
 
@@ -67,7 +62,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.white70,
                 ),
               ),
+
               const SizedBox(height: 40),
+
               // Google Sign-In Button
               SignInButton(
                 Buttons.Google,
