@@ -8,42 +8,14 @@ class FirebaseAuthServicesI {
   Stream<User?> get authState => _auth.authStateChanges();
 
   final GoogleSignIn googleSignIn = GoogleSignIn();
-
-/*  Future<void> signInGoogle()async {
-    try{
-      print("--------------------------------- 0 ");
-      final GoogleSignInAccount? getUser = await GoogleSignIn().signIn();
-      print("--------------------------------- 1 ");
-      final GoogleSignInAuthentication? googleAuth = await getUser?.authentication;
-      print("--------------------------------- 2 ");
-      print("${googleAuth?.idToken}");
-
-      if(googleAuth?.accessToken != null && googleAuth?.idToken != null){
-        final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth?.accessToken,
-          idToken: googleAuth?.idToken,
-        );
-        await _auth.signInWithCredential(credential);
-      }else{
-        print("google auth is null ---------------------------------- id token is null ");
-      }
-    }catch(error){
-      print("there is some issue while sign in ------------------------------------ $error");
-    }
-  }*/
-
 //SIGN IN KA Function
   Future<User?> signInWithGoogle() async {
     try {
-      print("========1======");
       //SIGNING IN WITH GOOGLE
       final GoogleSignInAccount? googleSignInAccount =
       await googleSignIn.signIn();
-      print("=======2=======");
       final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount!.authentication;
-      print('User: --------------------------------------${googleSignInAccount
-          .email}');
 
       //CREATING CREDENTIAL FOR FIREBASE
       final AuthCredential credential = GoogleAuthProvider.credential(
