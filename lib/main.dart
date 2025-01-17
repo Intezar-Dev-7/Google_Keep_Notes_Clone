@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_keep_notes_clone/home.dart';
 import 'package:google_keep_notes_clone/screens/login_screen.dart';
 
 import 'package:google_keep_notes_clone/services/login_info.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -46,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       // home: const HomeScreen(),
-      home: isLogIn ? const HomeScreen() : const LoginScreen(),
+      home: isLogIn  ? const HomeScreen() : const LoginScreen(),
     );
   }
 }

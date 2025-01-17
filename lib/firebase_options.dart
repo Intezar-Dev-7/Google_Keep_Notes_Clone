@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -33,10 +30,7 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,19 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB36ZIF3kQkXvBW9FqHkpHOrEZHrkfbUus',
-    appId: '1:967064072268:android:8cc1d2161904a93f3d84e9',
-    messagingSenderId: '967064072268',
-    projectId: 'keepnotesclone-7bc24',
-    storageBucket: 'keepnotesclone-7bc24.firebasestorage.app',
+    apiKey: 'AIzaSyDTfX9ApDsGIKNdPy3AesHzq4aouquHVG0',
+    appId: '1:779259636759:android:0bb03a9f1669b9abbfc052',
+    messagingSenderId: '779259636759',
+    projectId: 'keep-notes-clone-4f486',
+    storageBucket: 'keep-notes-clone-4f486.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDpN7dF674cFOf1bZ7Wqc8eV8KwmhCFU-8',
-    appId: '1:967064072268:ios:66ecaca0698f63ad3d84e9',
-    messagingSenderId: '967064072268',
-    projectId: 'keepnotesclone-7bc24',
-    storageBucket: 'keepnotesclone-7bc24.firebasestorage.app',
+    apiKey: 'AIzaSyDpPX4X_XKdidknwvKstHLN6kyr1XBA27U',
+    appId: '1:779259636759:ios:3eb0341f0497dacbbfc052',
+    messagingSenderId: '779259636759',
+    projectId: 'keep-notes-clone-4f486',
+    storageBucket: 'keep-notes-clone-4f486.firebasestorage.app',
     iosBundleId: 'com.example.googleKeepNotesClone',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCQ9_WPgcNo4F607sx-FUeByfeFK0hLd2o',
+    appId: '1:779259636759:web:1ba720051655ad85bfc052',
+    messagingSenderId: '779259636759',
+    projectId: 'keep-notes-clone-4f486',
+    authDomain: 'keep-notes-clone-4f486.firebaseapp.com',
+    storageBucket: 'keep-notes-clone-4f486.firebasestorage.app',
+    measurementId: 'G-22KWHSQ50T',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCQ9_WPgcNo4F607sx-FUeByfeFK0hLd2o',
+    appId: '1:779259636759:web:c76205ffd36988e7bfc052',
+    messagingSenderId: '779259636759',
+    projectId: 'keep-notes-clone-4f486',
+    authDomain: 'keep-notes-clone-4f486.firebaseapp.com',
+    storageBucket: 'keep-notes-clone-4f486.firebasestorage.app',
+    measurementId: 'G-JF4J74F3TG',
+  );
+
 }
