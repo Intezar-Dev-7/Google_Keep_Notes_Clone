@@ -113,7 +113,6 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
                 },
                 child: SizedBox(
                   height: 55,
-                  width: 190,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
