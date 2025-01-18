@@ -86,7 +86,7 @@ class _MyWidgetState extends State<SideMenuBar> {
                   bottomRight: Radius.circular(50)),
             ))),
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const ArchiveScreen()));
@@ -120,7 +120,7 @@ class _MyWidgetState extends State<SideMenuBar> {
               topRight: Radius.circular(50), bottomRight: Radius.circular(50)),
         ))),
         onPressed: () {
-          Navigator.push(context,
+          Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => const SettingsScreen()));
         },
         child: Container(

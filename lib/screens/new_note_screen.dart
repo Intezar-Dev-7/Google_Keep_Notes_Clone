@@ -3,6 +3,7 @@ import 'package:google_keep_notes_clone/home.dart';
 import 'package:google_keep_notes_clone/model/my_note_model.dart';
 import 'package:google_keep_notes_clone/services/db.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
+
 import 'package:uuid/uuid.dart';
 
 class NewNoteScreen extends StatefulWidget {

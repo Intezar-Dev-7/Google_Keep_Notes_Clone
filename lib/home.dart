@@ -5,6 +5,7 @@ import 'package:google_keep_notes_clone/screens/login_screen.dart';
 import 'package:google_keep_notes_clone/screens/new_note_screen.dart';
 import 'package:google_keep_notes_clone/screens/notes_screen.dart';
 import 'package:google_keep_notes_clone/screens/search_screen.dart';
+import 'package:google_keep_notes_clone/screens/settings_screen.dart';
 import 'package:google_keep_notes_clone/services/db.dart';
 import 'package:google_keep_notes_clone/services/login_info.dart';
 import 'package:google_keep_notes_clone/side_menu_bar.dart';
@@ -108,7 +109,7 @@ class _HomeState extends State<HomeScreen> {
         : Scaffold(
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const NewNoteScreen()),
@@ -198,7 +199,7 @@ class _HomeState extends State<HomeScreen> {
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LoginScreen()));
+                            builder: (context) => const SettingsScreen()));
                   },
                   child: CircleAvatar(
                     onBackgroundImageError: (Object, StackTrace) {

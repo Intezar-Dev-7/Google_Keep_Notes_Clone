@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_keep_notes_clone/home.dart';
 import 'package:google_keep_notes_clone/model/my_note_model.dart';
 import 'package:google_keep_notes_clone/screens/notes_screen.dart';
 import 'package:google_keep_notes_clone/services/db.dart';
@@ -52,10 +53,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   isArchived: widget.note.isArchived,
                   uniqueId: widget.note.uniqueId);
               await NotesDatabase.instance.updateNote(newNote);
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => NoteViewScreen(note: newNote)));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
           ),
         ],

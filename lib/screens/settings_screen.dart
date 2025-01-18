@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_keep_notes_clone/screens/login_screen.dart';
+import 'package:google_keep_notes_clone/services/auth.dart';
 import 'package:google_keep_notes_clone/services/login_info.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
 
@@ -105,8 +107,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
                 onPressed: () {
-                  // Handle logout action
-                  Navigator.pop(context); // Example action
+                  FirebaseAuthServices().signOut();
+                  LocalDataSaver.saveLoginData(false);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const LoginScreen())); // Example action
                 },
                 child: const Text(
                   "Logout",

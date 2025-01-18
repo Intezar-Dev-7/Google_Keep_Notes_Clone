@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   getLoggedInState() async {
     await LocalDataSaver.getLogData().then((value) {
       setState(() {
-        isLogIn = value.toString() == "null";
+        isLogIn = value!;
       });
     });
   }
@@ -34,13 +34,11 @@ class _MyAppState extends State<MyApp> {
     getLoggedInState();
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Google Kepp Notes Clone',
-      theme: ThemeData(),
       home: isLogIn ? const HomeScreen() : const LoginScreen(),
     );
   }

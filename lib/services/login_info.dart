@@ -4,7 +4,7 @@ class LocalDataSaver {
   static String nameKey = "NAMEKEY";
   static String emailKey = "EMAILKEY";
   static String imgKey = "IMGKEY";
-  static String logKey = "LOGWALIKEY";
+  static String logKey = "LOGKEY";
   static String syncKey = "SYNCKEY";
 
   static Future<bool> saveName(String username) async {
@@ -44,16 +44,16 @@ class LocalDataSaver {
 
   static Future<bool> saveSyncSettings(bool isSyncOn) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.setBool(syncKey, isSyncOn = false);
+    return await preferences.setBool(syncKey, isSyncOn);
   }
 
   static Future<bool?> getSyncSettings() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return preferences.getBool(syncKey);
+    return preferences.getBool(syncKey) ?? false;
   }
 
   static Future<bool?> getLogData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return preferences.getBool(logKey);
+    return preferences.getBool(logKey) ?? false;
   }
 }
