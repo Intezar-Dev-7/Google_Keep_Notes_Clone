@@ -1,49 +1,34 @@
 {
   "project_info": {
-    "project_number": "779259636759",
-    "project_id": "keep-notes-clone-4f486",
-    "storage_bucket": "keep-notes-clone-4f486.firebasestorage.app"
+    "project_number": "167331457100",
+    "project_id": "keepnotesclone-48de0",
+    "storage_bucket": "keepnotesclone-48de0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:779259636759:android:0bb03a9f1669b9abbfc052",
+        "mobilesdk_app_id": "1:167331457100:android:87da6c1718edb77d40ece9",
         "android_client_info": {
           "package_name": "com.example.google_keep_notes_clone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "779259636759-qr9f5q5sb9t0er6ddgmcatg168tiiond.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.google_keep_notes_clone",
-            "certificate_hash": "858f750333e188eb4fe48400ef7a632a0cd96b66"
-          }
-        },
-        {
-          "client_id": "779259636759-rmtmpbt02bq0ssmchsne9br6iltupiin.apps.googleusercontent.com",
+          "client_id": "167331457100-2mfk5tljnjqgfmjntjv2jj96l7hmhe74.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDTfX9ApDsGIKNdPy3AesHzq4aouquHVG0"
+          "current_key": "AIzaSyAjqspEA_7OLo8VNMzaMV7Nmvi933G6uQQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "779259636759-rmtmpbt02bq0ssmchsne9br6iltupiin.apps.googleusercontent.com",
+              "client_id": "167331457100-2mfk5tljnjqgfmjntjv2jj96l7hmhe74.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "779259636759-1l5n2s3uiob265efiuh0vj9fjet8it7t.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.googleKeepNotesClone"
-              }
             }
           ]
         }

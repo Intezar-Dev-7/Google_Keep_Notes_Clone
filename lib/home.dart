@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_keep_notes_clone/model/my_note_model.dart';
+import 'package:google_keep_notes_clone/screens/login_screen.dart';
 import 'package:google_keep_notes_clone/screens/new_note_screen.dart';
 import 'package:google_keep_notes_clone/screens/notes_screen.dart';
 import 'package:google_keep_notes_clone/screens/search_screen.dart';
@@ -8,6 +9,7 @@ import 'package:google_keep_notes_clone/services/db.dart';
 import 'package:google_keep_notes_clone/services/login_info.dart';
 import 'package:google_keep_notes_clone/side_menu_bar.dart';
 import 'package:google_keep_notes_clone/utils/colors.dart';
+import 'package:google_keep_notes_clone/services/auth.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,21 +20,49 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeState extends State<HomeScreen> {
   bool isLoading = true;
+  late String? imgUrl;
+
   List<Note> notesList = [];
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
-    LocalDataSaver.saveSyncSettings(false);
-    fetchNotes();
+
+    getAllNotes();
   }
 
-  Future fetchNotes() async {
-    notesList = await NotesDatabase.instance.readAllNotes();
-    setState(() {
-      isLoading = false;
+  Future createEntry(Note note) async {
+    await NotesDatabase.instance.insertEntry(note);
+  }
+
+  Future getAllNotes() async {
+    LocalDataSaver.getImg().then((value) {
+      if (mounted) {
+        setState(() {
+          imgUrl = value;
+        });
+      }
     });
+
+    notesList = await NotesDatabase.instance.readAllNotes();
+    if (mounted) {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  Future getOneNote(int id) async {
+    await NotesDatabase.instance.readOneNote(id);
+  }
+
+  Future updateOneNote(Note note) async {
+    await NotesDatabase.instance.updateNote(note);
+  }
+
+  Future deleteNote(Note note) async {
+    await NotesDatabase.instance.deleteNote(note);
   }
 
   Future deleteAllNotes() async {
@@ -157,14 +187,26 @@ class _HomeState extends State<HomeScreen> {
             child: Row(
               children: [
                 TextButton(
-                  onPressed:
-                      () {}, // Handle the grid view toggle logic here if needed.
+                  onPressed: () {},
                   child: const Icon(Icons.grid_view, color: white),
                 ),
                 const SizedBox(width: 9),
-                const CircleAvatar(
-                  radius: 16,
-                  backgroundColor: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    FirebaseAuthServices().signOut();
+                    LocalDataSaver.saveLoginData(false);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
+                  },
+                  child: CircleAvatar(
+                    onBackgroundImageError: (Object, StackTrace) {
+                      print("Ok");
+                    },
+                    radius: 16,
+                    backgroundImage: NetworkImage(imgUrl.toString()),
+                  ),
                 ),
               ],
             ),

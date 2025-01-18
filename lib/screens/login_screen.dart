@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Icon(Iconsax.google_1),
                   onPressed: () async {
                     try {
-                      await FirebaseAuthServicesI().signInWithGoogle();
+                      await FirebaseAuthServices().signInWithGoogle();
                       final User? currentUser = _auth.currentUser;
 
                       if (currentUser != null) {

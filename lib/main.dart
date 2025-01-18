@@ -1,16 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:google_keep_notes_clone/home.dart';
 import 'package:google_keep_notes_clone/screens/login_screen.dart';
-
 import 'package:google_keep_notes_clone/services/login_info.dart';
-import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -27,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   getLoggedInState() async {
     await LocalDataSaver.getLogData().then((value) {
       setState(() {
-        isLogIn = false;
+        isLogIn = value.toString() == "null";
       });
     });
   }
@@ -43,12 +39,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Google Keep Notes Clone',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // home: const HomeScreen(),
-      home: isLogIn  ? const HomeScreen() : const LoginScreen(),
+      title: 'Google Kepp Notes Clone',
+      theme: ThemeData(),
+      home: isLogIn ? const HomeScreen() : const LoginScreen(),
     );
   }
 }
