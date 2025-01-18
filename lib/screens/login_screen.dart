@@ -72,11 +72,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: Colors.white),
                 width: 157,
                 height: 35,
-                child: ElevatedButton(
+                child: TextButton(
                   child: const Icon(Iconsax.google_1),
                   onPressed: () async {
                     try {
-                      await signInWithGoogle();
+                      await FirebaseAuthServicesI().signInWithGoogle();
                       final User? currentUser = _auth.currentUser;
 
                       if (currentUser != null) {
