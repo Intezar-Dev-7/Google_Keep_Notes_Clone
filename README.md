@@ -12,8 +12,6 @@ The Google Keep Notes Clone is a simple, modern note-taking app designed to help
 
 🗑️ Trash: Restore accidentally deleted notes from the trash before permanent deletion.
 
-🔒 Secure and Private: Protect sensitive notes with PIN or fingerprint authentication.
-
 📱 Cross-Device Sync: Sync notes across devices in real-time, ensuring your information is always up to date.
 
 🗂️ Local Storage with SQFlite: Store and manage notes locally for offline access.
